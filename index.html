@@ -1,155 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Resume</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .gradient-bg {
-      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15, #fb7185);
-      background-size: 1000% 1000%;
-      animation: gradientShift 10s ease infinite;
-    }
-    @keyframes gradientShift {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-    .glow:hover {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sandeep Krishna | Full Stack Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0f14;
+  --card:#121822;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#4f46e5;
+  --border:rgba(255,255,255,.08);
+}
+
+.light{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --accent:#4f46e5;
+  --border:rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:24px;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+.logo{
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.toggle{
+  cursor:pointer;
+  font-size:20px;
+  user-select:none;
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:40px;
+  align-items:center;
+  background:linear-gradient(135deg,var(--card),transparent);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  animation:fadeUp .8s ease;
+}
+
+.hero h1{
+  font-size:48px;
+  margin:0;
+  line-height:1.1;
+}
+
+.hero h1 span{
+  color:var(--accent);
+}
+
+.hero p{
+  color:var(--muted);
+  margin:16px 0 24px;
+  max-width:600px;
+}
+
+.hero img{
+  width:100%;
+  border-radius:16px;
+  object-fit:cover;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+/* SECTIONS */
+section{
+  margin-top:60px;
+}
+
+section h2{
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:20px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* SKILLS */
+.skills span{
+  display:inline-block;
+  padding:8px 14px;
+  margin:6px;
+  background:rgba(79,70,229,.12);
+  border-radius:999px;
+  font-size:14px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:40px 0;
+  font-size:14px;
+}
+
+/* ANIM */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero h1{font-size:38px}
+}
+</style>
 </head>
-<body class="bg-gray-100 text-gray-800 transition-colors duration-500">
 
-  <!-- Dark Mode Toggle -->
- 
+<body>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('bg-gray-900');
-      document.body.classList.toggle('text-white');
-      document.querySelectorAll('.card').forEach(el => {
-        el.classList.toggle('bg-gray-800');
-        el.classList.toggle('text-white');
-      });
-    }
-  </script>
+<div class="container">
+<header>
+  <div class="logo">SK</div>
+  <div class="toggle" onclick="toggleTheme()">🌙</div>
+</header>
 
-  <!-- Navbar -->
-  <nav class="flex justify-center space-x-6 py-4 gradient-bg text-white font-bold sticky top-0 z-50">
-    <a href="#skills" class="hover:underline">Skills</a>
-    <a href="#projects" class="hover:underline">Projects</a>
-    <a href="#education" class="hover:underline">Education</a>
-    <a href="#personal" class="hover:underline">Personal</a>
-  </nav>
-
-  <!-- Header -->
-  <header class="text-center p-6 gradient-bg text-white">
-    <img src="https://via.placeholder.com/150" alt="Profile Picture" class="mx-auto rounded-full border-4 border-white w-32 h-32 object-cover">
-    <h1 class="text-3xl font-bold mt-4">Sandeep Krishna T</h1>
-    <p class="mt-2">
-      Email: 
-      <a href="mailto:Sankrish1303@gmail.com" class="underline">Sankrish1303@gmail.com</a> 
-      | Phone: 
-      <span class="underline cursor-pointer" onclick="copyPhone()">+91 7010494906</span>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Sandeep <span>Krishna</span></h1>
+    <p>
+      Full Stack Developer with hands-on experience in building dynamic web applications using PHP, React, and MySQL.
+      Seeking an opportunity to contribute to impactful projects while expanding my expertise in modern technologies.
     </p>
-    <script>
-      function copyPhone() {
-        navigator.clipboard.writeText('+917010494906');
-        alert('Phone number copied!');
-      }
-    </script>
-    
-  </header>
+    <p class="muted">
+      📍 Perundurai, Tamil Nadu, India<br>
+      ✉️ sankrishi1303@gmail.com | 📞 7010494906
+    </p>
+  </div>
+  <img src="profile.jpg" alt="Profile Photo">
+</div>
 
-  <!-- Main Content -->
-  <main class="max-w-5xl mx-auto p-6">
+<!-- EXPERIENCE -->
+<section>
+<h2>Experience</h2>
 
-    <!-- Skills Section -->
-    <section id="skills" class="mb-10">
-      <h2 class="text-2xl font-bold mb-4">Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">HTML</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">CSS</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">JavaScript</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">Auto CAD</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">UI / UX</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">Python</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">MySQL</div>
-        <div class="card bg-white p-4 rounded shadow hover:scale-105 transition glow">Git</div>
-      </div>
-    </section>
+<div class="card">
+  <h3>Full Stack Web Developer (Freelancer) — Addobyte</h3>
+  <p class="muted">May 2025 – Oct 2025 | Chennai</p>
+  <ul>
+    <li>Developed and maintained dynamic web applications using PHP (CodeIgniter), React, and MySQL.</li>
+    <li>Optimized images, CSS, and database queries to significantly reduce page load time.</li>
+    <li>Built a scalable e-commerce platform with interactive UI/UX, hover animations, sales tracking, and trending products.</li>
+    <li>Designed and deployed a travel booking platform (Andaman Yatra Holidays) with galleries, carousels, and accordions.</li>
+  </ul>
+</div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="mb-10">
-      <h2 class="text-2xl font-bold mb-4">Projects</h2>
-      <div class="space-y-4">
-        <div class="card bg-white p-4 rounded shadow hover:bg-blue-50 transition glow">
-          <h3 class="text-xl font-semibold">Project 1</h3>
-          <p class="text-sm">Short description of the project.</p>
-          <a href="#" class="text-blue-600 underline">View Project</a>
-        </div>
-        <div class="card bg-white p-4 rounded shadow hover:bg-blue-50 transition glow">
-          <h3 class="text-xl font-semibold">Project 2</h3>
-          <p class="text-sm">Short description of the project.</p>
-          <a href="#" class="text-blue-600 underline">View Project</a>
-        </div>
-        <div class="card bg-white p-4 rounded shadow hover:bg-blue-50 transition glow">
-          <h3 class="text-xl font-semibold">Project 3</h3>
-          <p class="text-sm">Short description of the project.</p>
-          <a href="#" class="text-blue-600 underline">View Project</a>
-        </div>
-        <div class="card bg-white p-4 rounded shadow hover:bg-blue-50 transition glow">
-          <h3 class="text-xl font-semibold">Project 4</h3>
-          <p class="text-sm">Short description of the project.</p>
-          <a href="#" class="text-blue-600 underline">View Project</a>
-        </div>
-        <div class="card bg-white p-4 rounded shadow hover:bg-blue-50 transition glow">
-          <h3 class="text-xl font-semibold">Project 5</h3>
-          <p class="text-sm">Short description of the project.</p>
-          <a href="#" class="text-blue-600 underline">View Project</a>
-        </div>
-      </div>
-    </section>
+<!-- EDUCATION -->
+<section>
+<h2>Education</h2>
 
-    <!-- Education Section -->
-    <section id="education" class="mb-10">
-      <h2 class="text-2xl font-bold mb-4">Educational Qualifications</h2>
-      <div class="space-y-4">
-        <details class="card bg-white p-4 rounded shadow glow">
-          <summary class="font-semibold cursor-pointer">Bachelor of Engineering in CSE</summary>
-          <p class="mt-2 text-sm">Kongu Engineering College, 2025</p>
-        </details>
-        <details class="card bg-white p-4 rounded shadow glow">
-          <summary class="font-semibold cursor-pointer">Diploma in Mechanical Engineering</summary>
-          <p class="mt-2 text-sm">Kongu Polytechnic College, 2022</p>
-        </details>
-        <details class="card bg-white p-4 rounded shadow glow">
-          <summary class="font-semibold cursor-pointer">Secondary School</summary>
-          <p class="mt-2 text-sm">Bharathi Matric Hr Sec School, 2019</p>
-        </details>
-      </div>
-    </section>
+<div class="card">
+  <h3>Kongu Engineering College</h3>
+  <p class="muted">Bachelor of Engineering (CSE) — 2022–2025</p>
+  <strong>Academic Projects</strong>
+  <ul>
+    <li><b>Federated Learning with SDN Optimization</b><br>
+      Implemented FedAvg with SDN routing and Dijkstra’s Algorithm to reduce latency.
+    </li>
+    <li><b>Dynamic Poultry Management Platform</b><br>
+      ML-based system with Excel-driven automation and reporting.
+    </li>
+  </ul>
+</div>
 
-    <!-- Personal Details Section -->
-    <section id="personal">
-      <h2 class="text-2xl font-bold mb-4">Personal Details</h2>
-      <ul class="card bg-white p-4 rounded shadow space-y-2 glow">
-        <li><strong>Full Name:</strong> Sandeep Krishna T</li>
-        <li><strong>Date of Birth:</strong> 13 Aug 2003</li>
-        <li><strong>Address:</strong> Erode, Tamil Nadu, India.</li>
-        <li><strong>Languages:</strong> English, Tamil</li>
-      </ul>
-    </section>
+<div class="card">
+  <h3>Kongu Polytechnic College</h3>
+  <p class="muted">Diploma in Mechanical Engineering — 2019–2022</p>
+  <p>
+    Built a strong foundation in technical design and 3D modelling (AutoCAD),
+    improving logic and precision that complements software development.
+  </p>
+</div>
+</section>
 
-  </main>
+<!-- SKILLS -->
+<section>
+<h2>Skills</h2>
+<div class="card skills">
+  <span>Java</span><span>Python</span><span>JavaScript</span><span>HTML</span>
+  <span>CSS</span><span>React.js</span><span>PHP</span><span>MySQL</span>
+  <span>CodeIgniter</span><span>Laravel</span><span>Git/GitHub</span>
+  <span>UI/UX</span><span>Bootstrap</span>
+  <span>Figma</span><span>Photoshop</span><span>Illustrator</span>
+</div>
+</section>
 
-  <!-- Footer -->
-  <footer class="gradient-bg text-white p-4 text-center mt-10">
-    © 2025 Sandeep Krishna. All rights reserved.
-  </footer>
+<!-- LINKS -->
+<section>
+<h2>Links</h2>
+<div class="card">
+  <p>
+    🔗 <a href="https://github.com/tsk1303" target="_blank">GitHub</a><br>
+    🔗 <a href="https://tsk1303.github.io/Rsume/" target="_blank">Online Portfolio</a>
+  </p>
+</div>
+</section>
+
+<footer>
+© 2026 Sandeep Krishna — Built clean, shipped fast.
+</footer>
+
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  document.querySelector(".toggle").textContent =
+    document.body.classList.contains("light") ? "☀️" : "🌙";
+}
+</script>
 
 </body>
 </html>
